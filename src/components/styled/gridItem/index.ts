@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { GridItemProps, Status } from 'types';
-import { theme } from '../../../styles';
+import { theme, device } from 'styles';
 
 const getBgColor = (status: Status) => {
   const bgColors = {
@@ -47,9 +47,7 @@ export const GridItem = styled.button<GridItemProps>`
     background-color: ${({ theme }) => theme.colors.colorBlueLight};
   }
 
-  &::before {
-    content: '';
-    padding-bottom: 100%;
-    display: block;
+  @media ${device.mobileM} {
+    font-size: 2.5rem;
   }
 `;

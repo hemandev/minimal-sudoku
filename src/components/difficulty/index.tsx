@@ -6,6 +6,7 @@ import { Button as StyledButton } from 'components/styled/button';
 import { ISetDifficulty } from '../game';
 import { difficultyLevel } from 'types';
 import { difficultyLevels } from '../../constants';
+import { device } from 'styles';
 
 interface IDifficultyContainer {
   currentLevel: difficultyLevel;
@@ -20,6 +21,11 @@ const DifficultyContainer = styled.div`
   display: flex;
   margin: 3.5rem;
   justify-content: center;
+
+  @media ${device.mobileM} {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Button = styled(StyledButton)<IDifficultyButton>`
@@ -31,6 +37,10 @@ const Button = styled(StyledButton)<IDifficultyButton>`
     active ? `2px solid ${theme.colors.colorGreen}` : '2px solid white'};
   &:hover {
     background-color: ${({ theme }) => rgba(theme.colors.colorGreenLight, .2)};
+  }
+
+  @media ${device.mobileM} {
+    margin-bottom: .5rem;
   }
 `;
 
