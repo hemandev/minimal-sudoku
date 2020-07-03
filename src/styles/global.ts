@@ -1,4 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
+import { device } from './media';
 
 export default createGlobalStyle`
     ${({ theme }) => css`
@@ -12,6 +13,14 @@ export default createGlobalStyle`
 
       html {
         font-size: 62.5%;
+
+        @media ${device.tablet} {
+          font-size: 50%;
+        }
+
+        @media ${device.mobileM} {
+          font-size: 45%;
+        }
       }
 
       html,

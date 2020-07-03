@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { Button } from 'components/styled/button';
+import { Button as StyledButton } from 'components/styled/button';
 import { IStartNewGame, IResetGame } from 'components/game';
 
 interface IConfigurationContainer {
@@ -12,8 +12,11 @@ interface IConfigurationContainer {
 const ConfigurationContainer = styled.div`
   display: flex;
   margin: 3.5rem;
-  height: 5rem;
   justify-content: center;
+`;
+
+const Button = styled(StyledButton)`
+  padding: 1rem 2.5rem;
 `;
 
 export const ConfigurationGroup: FC<IConfigurationContainer> = ({

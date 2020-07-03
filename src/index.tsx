@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyles, theme } from 'styles';
-import * as serviceWorker from 'core/serviceWorker';
+import { register } from 'core/serviceWorker';
 import { App } from 'app/App';
 import { store } from 'app/store';
 
@@ -20,4 +20,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-serviceWorker.unregister();
+register();

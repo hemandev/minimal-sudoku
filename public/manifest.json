@@ -1,6 +1,6 @@
 {
-  "short_name": "Sudoku",
-  "name": "Sudoku",
+  "short_name": "Minimal Sudoku",
+  "name": "Minimal Sudoku",
   "icons": [
     {
       "src": "favicon.ico",

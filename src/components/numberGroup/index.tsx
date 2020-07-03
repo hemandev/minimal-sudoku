@@ -10,21 +10,23 @@ interface INumberGroup {
 }
 
 const StyledNumberGroup = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(9, 5rem);
+  grid-template-rows: 5rem;
+  grid-gap: 3px;
   margin-top: 2.5rem;
-  height: 5rem;
   justify-content: center;
 `;
 
 const NumberButton = styled(Button)`
-  flex-basis: 5rem;
   border: ${({ theme }) => `1px solid ${theme.colors.colorPrimary}`};
-  //border-right: none;
+  margin: 0;
   border-left: ${({ theme }) => `1px solid ${theme.colors.colorPrimary}`};
 
   &:last-child {
     border-right: ${({ theme }) => `1px solid ${theme.colors.colorPrimary}`};
   }
+  
 `;
 
 export const NumberGroup: FC<INumberGroup> = ({ onNumberSelected }) => {
