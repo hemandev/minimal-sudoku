@@ -18,7 +18,7 @@ const StyledNumberGroup = styled.div`
   margin-top: 2.5rem;
   justify-content: center;
 
-  @media ${device.mobileM} {
+  @media ${device.mobileL} {
     margin-top: 2rem;
     grid-template-columns: repeat(9, 4rem);
     grid-template-rows: 4rem;
@@ -35,7 +35,7 @@ const NumberButton = styled(Button)`
     border-right: ${({ theme }) => `1px solid ${theme.colors.colorPrimary}`};
   }
 
-  @media ${device.mobileM} {
+  @media ${device.mobileL} {
     font-size: 2.5rem;
   }
 `;

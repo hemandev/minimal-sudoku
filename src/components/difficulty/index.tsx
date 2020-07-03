@@ -22,7 +22,7 @@ const DifficultyContainer = styled.div`
   margin: 3.5rem;
   justify-content: center;
 
-  @media ${device.mobileM} {
+  @media ${device.mobileL} {
     flex-direction: column;
     align-items: center;
   }
@@ -39,7 +39,7 @@ const Button = styled(StyledButton)<IDifficultyButton>`
     background-color: ${({ theme }) => rgba(theme.colors.colorGreenLight, .2)};
   }
 
-  @media ${device.mobileM} {
+  @media ${device.mobileL} {
     margin-bottom: .5rem;
   }
 `;

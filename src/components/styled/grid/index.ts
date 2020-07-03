@@ -16,7 +16,7 @@ const SubGrid = styled.div`
   grid-template-rows: repeat(3, 15rem);
   grid-gap: 5px;
 
-  @media ${device.mobileM} {
+  @media ${device.mobileL} {
     grid-template-columns: repeat(3, 12rem);
     grid-template-rows: repeat(3, 12rem);
     grid-gap: 4px;
@@ -29,7 +29,7 @@ const SubGridItem = styled.div`
   grid-template-rows: repeat(3, 5rem);
   grid-gap: 1px;
 
-  @media ${device.mobileM} {
+  @media ${device.mobileL} {
     grid-template-columns: repeat(3, 4rem);
     grid-template-rows: repeat(3, 4rem);
     grid-gap: 1px;
