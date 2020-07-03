@@ -4,6 +4,8 @@ export {
   createFullGrid,
   removeNumbersFromGrid,
   copyGrid,
+  getRowIndex,
+  getColIndex,
 } from './grid';
 export { shuffle, randomNumberGenerator } from './shuffle';
 export { isInGridColumn, isInGridRow, isInGridSquare } from './checkValue';
@@ -14,5 +16,5 @@ export {
   isUserFillableBlock,
   isCorrectValue,
   isBlockEmpty,
-  isNeighbor
+  isNeighbor,
 } from './game';

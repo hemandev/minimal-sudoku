@@ -1,7 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { createNewGame } from 'utils';
-import { Grid, N, Block, FilledBlock } from 'types';
+import {
+  Grid,
+  N,
+  Block,
+  FilledBlock,
+  difficultyLevel,
+} from 'types';
 
 interface GridState {
   solvedGrid: Grid;
@@ -9,11 +15,13 @@ interface GridState {
   activeGrid: Grid;
   selectedBlock: Block | null;
   remainingBlocks: number;
+  difficulty: difficultyLevel;
 }
 
 const initialState: GridState = {
   ...createNewGame(),
   selectedBlock: null,
+  difficulty: 'easy',
 };
 
 const gridSlice = createSlice({
@@ -21,7 +29,7 @@ const gridSlice = createSlice({
   initialState,
   reducers: {
     startNewGame(state) {
-      const { activeGrid, solvedGrid, challengeGrid } = createNewGame();
+      const { activeGrid, solvedGrid, challengeGrid } = createNewGame(state.difficulty);
       state.activeGrid = activeGrid;
       state.solvedGrid = solvedGrid;
       state.challengeGrid = challengeGrid;
@@ -31,6 +39,9 @@ const gridSlice = createSlice({
     },
     selectBlock(state, action: PayloadAction<Block>) {
       state.selectedBlock = action.payload;
+    },
+    setDifficulty(state, action: PayloadAction<difficultyLevel>) {
+      state.difficulty = action.payload;
     },
     fillBlock(
       state,
@@ -42,6 +53,6 @@ const gridSlice = createSlice({
 });
 
 export const {
-  actions: { startNewGame, selectBlock, fillBlock, resetGame },
+  actions: { startNewGame, selectBlock, fillBlock, resetGame, setDifficulty },
   reducer: gridReducer,
 } = gridSlice;

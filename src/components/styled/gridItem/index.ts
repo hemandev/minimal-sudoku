@@ -2,20 +2,6 @@ import styled from 'styled-components';
 
 import { GridItemProps, Status } from 'types';
 import { theme } from '../../../styles';
-import { GRID_SIZE } from '../../../constants';
-
-const borderThick = '3px solid #222831;';
-const borderMedium = '2px solid #222831;';
-const borderThin = '1px solid #222831;';
-
-const getBorderSize = (index: number) => {
-  if (index === GRID_SIZE - 1) {
-    return borderThick;
-  } else if ((index + 1) % 3 === 0) {
-    return borderMedium;
-  }
-  return 'none';
-};
 
 const getBgColor = (status: Status) => {
   const bgColors = {
@@ -42,8 +28,6 @@ const getColor = (status: Status) => {
 };
 
 export const GridItem = styled.button<GridItemProps>`
-  grid-area: ${({ row, col }) =>
-    `${row + 1} / ${col + 1} / ${row + 2} / ${col + 2}`};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,10 +40,7 @@ export const GridItem = styled.button<GridItemProps>`
   padding: 1rem;
   font-size: 3rem;
   cursor: pointer;
-  border-top: ${({ row }) => (row === 0 ? borderThick : borderThin)};
-  border-left: ${({ col }) => (col === 0 ? borderThick : borderThin)};
-  border-right: ${({ col }) => getBorderSize(col)};
-  border-bottom: ${({ row }) => getBorderSize(row)};
+  border: none;
   transition: ${({ theme }) => theme.transition.transition};
 
   &:hover {

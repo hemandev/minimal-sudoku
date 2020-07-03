@@ -12,6 +12,8 @@ export type SquareRow = [N, N, N];
 
 export type Square = [SquareRow, SquareRow, SquareRow];
 
+export type difficultyLevel = 'easy' | 'medium' | 'hard' | 'expert';
+
 export interface GridItemProps {
   row: number;
   col: number;

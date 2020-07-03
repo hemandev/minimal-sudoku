@@ -4,9 +4,16 @@ import styled from 'styled-components';
 
 import { SudokuGrid } from 'components/sudokuGrid';
 import { NumberGroup } from 'components/numberGroup';
+import { Difficulty } from 'components/difficulty';
 import { ConfigurationGroup } from 'components/configGroup';
-import { fillBlock, selectBlock, startNewGame, resetGame } from 'slices/gridSlice';
-import { Block, FilledBlock, Status } from 'types';
+import {
+  fillBlock,
+  selectBlock,
+  startNewGame,
+  resetGame,
+  setDifficulty
+} from 'slices/gridSlice';
+import { Block, FilledBlock, Status, difficultyLevel } from 'types';
 import { RootState } from 'app/rootReducer';
 import {
   isUserFillableBlock,
@@ -22,6 +29,7 @@ export type IGetStatus = (block: FilledBlock) => Status;
 export type ISelectBlock = (block: Block) => ReturnType<typeof selectBlock>;
 export type IStartNewGame = () => ReturnType<typeof startNewGame>;
 export type IResetGame = () => ReturnType<typeof resetGame>;
+export type ISetDifficulty = (level: difficultyLevel) => ReturnType<typeof setDifficulty>
 
 export const Game: FC = () => {
   const dispatch = useDispatch();
@@ -37,6 +45,9 @@ export const Game: FC = () => {
   const selectedBlock = useSelector(
     (state: RootState) => state.gridReducer.selectedBlock
   );
+  const currentDifficulty = useSelector(
+    (state: RootState) => state.gridReducer.difficulty
+  );
 
   const selectBlockAction = useCallback(
     (block: Block) => dispatch(selectBlock(block)),
@@ -46,6 +57,8 @@ export const Game: FC = () => {
   const newGameAction = useCallback(() => dispatch(startNewGame()), [dispatch]);
 
   const resetGameAction = useCallback(() => dispatch(resetGame()), [dispatch]);
+
+  const setDifficultyAction = useCallback((difficulty: difficultyLevel) => dispatch(setDifficulty(difficulty)), [dispatch]);
 
   const getStatus = useCallback(
     (block: FilledBlock): Status => {
@@ -93,7 +106,11 @@ export const Game: FC = () => {
 
   return (
     <GameContainer>
-      <ConfigurationGroup startNewGame={newGameAction} resetGame={resetGameAction}/>
+      <ConfigurationGroup
+        startNewGame={newGameAction}
+        resetGame={resetGameAction}
+      />
+      <Difficulty currentLevel={currentDifficulty} setDifficulty={setDifficultyAction}/>
       <SudokuGrid
         selectedBlock={selectedBlock}
         grid={grid}

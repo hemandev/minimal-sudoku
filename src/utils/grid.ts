@@ -11,6 +11,12 @@ import {
 
 const numbers: Numbers[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+export const getRowIndex = (index: number, gridSize: number) =>
+  Math.floor(index / gridSize);
+
+export const getColIndex = (index: number, gridSize: number) =>
+  index % gridSize;
+
 /**
  * Creates and returns and empty grid
  * @returns {Grid} returns newly created grid
@@ -29,8 +35,8 @@ export const fillGrid = (grid: Grid) => {
   let row = 0;
   let col = 0;
   for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
-    row = Math.floor(i / GRID_SIZE);
-    col = i % GRID_SIZE;
+    row = getRowIndex(i, GRID_SIZE);
+    col = getColIndex(i, GRID_SIZE);
 
     if (grid[row][col] === EMPTY_VALUE) {
       const shuffledNumbers = shuffle<Numbers>(numbers);

@@ -6,7 +6,7 @@ export const Title = styled.h1`
     text-align: center;
     margin-top: 0;
     text-transform: uppercase;
-    font-size: 5rem;
+    font-size: 4rem;
     letter-spacing: 3px;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;

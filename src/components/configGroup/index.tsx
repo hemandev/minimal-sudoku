@@ -11,12 +11,13 @@ interface IConfigurationContainer {
 
 const ConfigurationContainer = styled.div`
   display: flex;
-  margin: 3.5rem;
+  margin: 2.5rem;
   justify-content: center;
 `;
 
 const Button = styled(StyledButton)`
   padding: 1rem 2.5rem;
+  font-size: 2rem;
 `;
 
 export const ConfigurationGroup: FC<IConfigurationContainer> = ({

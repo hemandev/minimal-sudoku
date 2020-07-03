@@ -13,7 +13,7 @@ const StyledNumberGroup = styled.div`
   display: grid;
   grid-template-columns: repeat(9, 5rem);
   grid-template-rows: 5rem;
-  grid-gap: 3px;
+  grid-gap: 2px;
   margin-top: 2.5rem;
   justify-content: center;
 `;
@@ -26,7 +26,6 @@ const NumberButton = styled(Button)`
   &:last-child {
     border-right: ${({ theme }) => `1px solid ${theme.colors.colorPrimary}`};
   }
-  
 `;
 
 export const NumberGroup: FC<INumberGroup> = ({ onNumberSelected }) => {

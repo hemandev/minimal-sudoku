@@ -17,9 +17,17 @@ export default createGlobalStyle`
         @media ${device.tablet} {
           font-size: 50%;
         }
-
+        
         @media ${device.mobileM} {
           font-size: 45%;
+        }
+
+        @media ${device.mobileM} {
+          font-size: 40%;
+        }
+
+        @media ${device.mobileS} {
+          font-size: 35%;
         }
       }
 
