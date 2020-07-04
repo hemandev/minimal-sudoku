@@ -56,3 +56,5 @@ export const isInGridSquare = ({
   const workingSquare = identifyWorkingSquare({ grid, col, row });
   return workingSquare.flat(1).includes(value);
 };
+
+

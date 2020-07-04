@@ -24,6 +24,7 @@ export const createNewGame = (level: difficultyLevel = 'easy') => {
     solvedGrid,
     activeGrid,
     remainingBlocks,
+    actualRemainingBlocks: remainingBlocks
   };
 };
 

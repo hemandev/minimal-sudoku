@@ -14,6 +14,12 @@ export const DarkToggleButton = styled(Button)<IToggleProps>`
   right: 1rem;
   border: none;
   background-color: transparent;
+
+  @media ${device.mobileL} {
+    top: 1.2rem;
+    right: 0rem;
+  }
+
   &:hover {
     background-color: transparent;
   }

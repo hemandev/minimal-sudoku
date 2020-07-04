@@ -50,7 +50,6 @@ export const GlobalStyles = createGlobalStyle`
         line-height: 1.7;
         background: ${theme.colors.background};
         color: ${theme.colors.colorPrimary};
-        transition: all .5s linear;
       }
     `}
 `;

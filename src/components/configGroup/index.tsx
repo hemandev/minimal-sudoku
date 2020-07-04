@@ -18,6 +18,7 @@ const ConfigurationContainer = styled.div`
 const Button = styled(StyledButton)`
   padding: 1rem 2.5rem;
   font-size: 2rem;
+  text-transform: uppercase;
 `;
 
 export const ConfigurationGroup: FC<IConfigurationContainer> = ({

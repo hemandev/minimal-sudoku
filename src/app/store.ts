@@ -11,7 +11,11 @@ export const store = configureStore({
 
 store.subscribe(() => {
   const gridReducer = store.getState().gridReducer;
-  const newGridReducer = { ...gridReducer, selectedBlock: null };
+  const newGridReducer = {
+    ...gridReducer,
+    selectedBlock: null,
+    victoryModalOpen: false,
+  };
   saveState({ ...store.getState(), gridReducer: newGridReducer });
 });
 

@@ -19,3 +19,4 @@ export {
   isNeighbor,
 } from './game';
 export { saveState, loadState } from './localStorage';
+export { checkSolution } from './checkSolution';

@@ -1,12 +1,15 @@
 import React, { FC, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import Modal from 'react-modal';
 
 import { SudokuGrid } from 'components/sudokuGrid';
 import { NumberGroup } from 'components/numberGroup';
 import { Difficulty } from 'components/difficulty';
 import { ConfigurationGroup } from 'components/configGroup';
 import { DarkToggleButton } from 'components/styled';
+import { Button } from 'components/styled';
+import { Paragraph } from 'components/styled';
 import { ReactComponent as MoonIcon } from 'assets/icons/moon.svg';
 import { ReactComponent as SunIcon } from 'assets/icons/sun.svg';
 import {
@@ -14,6 +17,7 @@ import {
   selectBlock,
   startNewGame,
   resetGame,
+  closeModal,
   setDifficulty,
 } from 'slices/gridSlice';
 import { setTheme } from 'slices/userPrefSlice';
@@ -26,7 +30,39 @@ import {
   isNeighbor,
 } from 'utils';
 
+Modal.setAppElement('#root');
+
 const GameContainer = styled.main``;
+const ModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+const ModalButton = styled(Button)`
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+`;
+
+const ModalCloseButton = styled(Button)`
+  border: none;
+  padding: 1rem;
+  font-size: 4.5rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+`;
+
+const ModalParagraph = styled(Paragraph)`
+  font-weight: 400;
+  font-size: 3rem;
+`;
 
 interface IGameProps {
   theme: UserTheme;
@@ -59,6 +95,12 @@ export const Game: FC<IGameProps> = ({ theme }) => {
     (state: RootState) => state.gridReducer.difficulty
   );
 
+  const modalOpened = useSelector(
+    (state: RootState) => state.gridReducer.victoryModalOpen
+  );
+
+  const totalMoves = useSelector((state: RootState) => state.gridReducer.moves);
+
   const selectBlockAction = useCallback(
     (block: Block) => dispatch(selectBlock(block)),
     [dispatch]
@@ -70,6 +112,10 @@ export const Game: FC<IGameProps> = ({ theme }) => {
   const newGameAction = useCallback(() => dispatch(startNewGame()), [dispatch]);
 
   const resetGameAction = useCallback(() => dispatch(resetGame()), [dispatch]);
+
+  const closeModalAction = useCallback(() => dispatch(closeModal()), [
+    dispatch,
+  ]);
 
   const setDifficultyAction = useCallback(
     (difficulty: difficultyLevel) => dispatch(setDifficulty(difficulty)),
@@ -120,6 +166,21 @@ export const Game: FC<IGameProps> = ({ theme }) => {
     [dispatch, selectedBlock, challengeGrid]
   );
 
+  const customModalStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      padding: '0',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-30%',
+      height: '60%',
+      width: '80%',
+      borderRadius: '0',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+
   return (
     <GameContainer>
       <DarkToggleButton mode={theme} onClick={() => setThemeAction(theme)}>
@@ -142,6 +203,23 @@ export const Game: FC<IGameProps> = ({ theme }) => {
         onNumberSelected={onNumberSelected}
       />
       <NumberGroup onNumberSelected={onNumberSelected} />
+      <Modal
+        isOpen={modalOpened}
+        onRequestClose={closeModalAction}
+        shouldCloseOnOverlayClick={true}
+        shouldCloseOnEsc={true}
+        style={customModalStyles}
+        contentLabel="You won"
+      >
+        <ModalContainer>
+          <ModalCloseButton onClick={closeModalAction}>
+            &times;
+          </ModalCloseButton>
+          <ModalParagraph>You won!</ModalParagraph>
+          <ModalParagraph>Total Moves: {totalMoves}</ModalParagraph>
+          <ModalButton onClick={newGameAction}>Play Again</ModalButton>
+        </ModalContainer>
+      </Modal>
     </GameContainer>
   );
 };
