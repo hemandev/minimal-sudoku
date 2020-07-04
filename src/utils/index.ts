@@ -18,3 +18,4 @@ export {
   isBlockEmpty,
   isNeighbor,
 } from './game';
+export { saveState, loadState } from './localStorage';
