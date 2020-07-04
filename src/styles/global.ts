@@ -1,7 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { device } from './media';
 
-export default createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
     ${({ theme }) => css`
       *,
       *::before,
@@ -17,7 +17,7 @@ export default createGlobalStyle`
         @media ${device.tablet} {
           font-size: 50%;
         }
-        
+
         @media ${device.mobileM} {
           font-size: 45%;
         }
@@ -50,6 +50,7 @@ export default createGlobalStyle`
         line-height: 1.7;
         background: ${theme.colors.background};
         color: ${theme.colors.colorPrimary};
+        transition: all .5s linear;
       }
     `}
 `;

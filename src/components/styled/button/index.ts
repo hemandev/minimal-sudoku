@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { rgba } from 'polished';
 
 export const Button = styled.button`
   outline: none;
@@ -13,11 +14,11 @@ export const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.colorWhite};
   color: ${({ theme }) => theme.colors.colorPrimary};
   font-size: 3rem;
-  border: ${({ theme }) => `1px solid ${theme.colors.colorBlue}`};
+  border: ${({ theme }) => `1px solid ${theme.colors.colorGreen}`};
   cursor: pointer;
   transition: ${({ theme }) => theme.transition.transition};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.colorBlueLight};
+    background-color: ${({ theme }) => rgba(theme.colors.colorGreenLight, .3)};
   }
 `;

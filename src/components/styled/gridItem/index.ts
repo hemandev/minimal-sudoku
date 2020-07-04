@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 
 import { GridItemProps, Status } from 'types';
-import { theme, device } from 'styles';
+import { device } from 'styles';
 
-const getBgColor = (status: Status) => {
+const getBgColor = (status: Status, theme: DefaultTheme) => {
   const bgColors = {
     active: theme.colors.colorBlueLight,
     correct: theme.colors.colorGreenLight,
@@ -15,7 +15,7 @@ const getBgColor = (status: Status) => {
   return bgColors[status];
 };
 
-const getColor = (status: Status) => {
+const getColor = (status: Status, theme: DefaultTheme) => {
   const colors = {
     active: theme.colors.colorPrimary,
     correct: theme.colors.colorGreen,
@@ -35,8 +35,8 @@ export const GridItem = styled.button<GridItemProps>`
   font-weight: 300;
   outline: none;
   user-select: none;
-  background-color: ${({ status }) => getBgColor(status)};
-  color: ${({ status }) => getColor(status)};
+  background-color: ${({ status, theme }) => getBgColor(status, theme)};
+  color: ${({ status, theme }) => getColor(status, theme)};
   padding: 1rem;
   font-size: 3rem;
   cursor: pointer;

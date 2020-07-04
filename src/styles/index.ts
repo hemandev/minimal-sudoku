@@ -1,3 +1,3 @@
-export { default as GlobalStyles } from './global';
-export { default as theme } from './theme';
+export { GlobalStyles } from './global';
+export { lightTheme, darkTheme } from './theme';
 export { device } from './media';

@@ -3,11 +3,19 @@ import styled from 'styled-components';
 import { device } from 'styles';
 
 const Container = styled.div`
-  background: black;
+  background: ${({theme}) => theme.colors.colorPrimary};
   display: inline-block;
-  border: 2px solid black;
-  padding-right: 2px;
-  padding-bottom: 2px;
+  border-color: ${({theme}) => theme.colors.colorPrimary};
+  border-style: solid;
+  border-width: 3px 5px 5px 3px;
+
+  @media ${device.mobileL} {
+    border-width: 2px 4px 4px 2px
+  }
+
+  @media ${device.mobileS} {
+    border-width: 2px 4px 3px 2px;
+  }
 `;
 
 const SubGrid = styled.div`

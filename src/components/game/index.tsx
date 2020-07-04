@@ -6,14 +6,18 @@ import { SudokuGrid } from 'components/sudokuGrid';
 import { NumberGroup } from 'components/numberGroup';
 import { Difficulty } from 'components/difficulty';
 import { ConfigurationGroup } from 'components/configGroup';
+import { DarkToggleButton } from 'components/styled';
+import { ReactComponent as MoonIcon } from 'assets/icons/moon.svg';
+import { ReactComponent as SunIcon } from 'assets/icons/sun.svg';
 import {
   fillBlock,
   selectBlock,
   startNewGame,
   resetGame,
-  setDifficulty
+  setDifficulty,
 } from 'slices/gridSlice';
-import { Block, FilledBlock, Status, difficultyLevel } from 'types';
+import { setTheme } from 'slices/userPrefSlice';
+import { Block, FilledBlock, Status, difficultyLevel, UserTheme } from 'types';
 import { RootState } from 'app/rootReducer';
 import {
   isUserFillableBlock,
@@ -24,14 +28,20 @@ import {
 
 const GameContainer = styled.main``;
 
+interface IGameProps {
+  theme: UserTheme;
+}
+
 export type INumberSelected = (value: string) => void;
 export type IGetStatus = (block: FilledBlock) => Status;
 export type ISelectBlock = (block: Block) => ReturnType<typeof selectBlock>;
 export type IStartNewGame = () => ReturnType<typeof startNewGame>;
 export type IResetGame = () => ReturnType<typeof resetGame>;
-export type ISetDifficulty = (level: difficultyLevel) => ReturnType<typeof setDifficulty>
+export type ISetDifficulty = (
+  level: difficultyLevel
+) => ReturnType<typeof setDifficulty>;
 
-export const Game: FC = () => {
+export const Game: FC<IGameProps> = ({ theme }) => {
   const dispatch = useDispatch();
 
   const grid = useSelector((state: RootState) => state.gridReducer.activeGrid);
@@ -54,11 +64,17 @@ export const Game: FC = () => {
     [dispatch]
   );
 
+  const setThemeAction = (mode: UserTheme) =>
+    mode === 'light' ? dispatch(setTheme('dark')) : dispatch(setTheme('light'));
+
   const newGameAction = useCallback(() => dispatch(startNewGame()), [dispatch]);
 
   const resetGameAction = useCallback(() => dispatch(resetGame()), [dispatch]);
 
-  const setDifficultyAction = useCallback((difficulty: difficultyLevel) => dispatch(setDifficulty(difficulty)), [dispatch]);
+  const setDifficultyAction = useCallback(
+    (difficulty: difficultyLevel) => dispatch(setDifficulty(difficulty)),
+    [dispatch]
+  );
 
   const getStatus = useCallback(
     (block: FilledBlock): Status => {
@@ -106,11 +122,18 @@ export const Game: FC = () => {
 
   return (
     <GameContainer>
+      <DarkToggleButton mode={theme} onClick={() => setThemeAction(theme)}>
+        <SunIcon />
+        <MoonIcon />
+      </DarkToggleButton>
       <ConfigurationGroup
         startNewGame={newGameAction}
         resetGame={resetGameAction}
       />
-      <Difficulty currentLevel={currentDifficulty} setDifficulty={setDifficultyAction}/>
+      <Difficulty
+        currentLevel={currentDifficulty}
+        setDifficulty={setDifficultyAction}
+      />
       <SudokuGrid
         selectedBlock={selectedBlock}
         grid={grid}

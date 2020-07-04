@@ -14,6 +14,7 @@ export type Square = [SquareRow, SquareRow, SquareRow];
 
 export type difficultyLevel = 'easy' | 'medium' | 'hard' | 'expert';
 
+export type UserTheme = 'light' | 'dark';
 export interface GridItemProps {
   row: number;
   col: number;

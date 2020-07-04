@@ -34,7 +34,7 @@ const Button = styled(StyledButton)<IDifficultyButton>`
   text-transform: uppercase;
   border: none;
   border-bottom: ${({ theme, active }) =>
-    active ? `2px solid ${theme.colors.colorGreen}` : '2px solid white'};
+    active ? `2px solid ${theme.colors.colorGreen}` : `2px solid ${theme.colors.colorWhite}`};
   &:hover {
     background-color: ${({ theme }) => rgba(theme.colors.colorGreenLight, .2)};
   }
