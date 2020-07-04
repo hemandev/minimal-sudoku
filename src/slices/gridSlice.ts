@@ -41,12 +41,14 @@ const gridSlice = createSlice({
       state.actualRemainingBlocks = actualRemainingBlocks;
       state.remainingBlocks = remainingBlocks;
       state.moves = 0;
+      state.selectedBlock = null;
       state.victoryModalOpen = false;
     },
     resetGame(state) {
       state.activeGrid = state.challengeGrid;
       state.remainingBlocks = state.actualRemainingBlocks;
       state.moves = 0;
+      state.selectedBlock = null;
       state.victoryModalOpen = false;
     },
     selectBlock(state, action: PayloadAction<Block>) {
