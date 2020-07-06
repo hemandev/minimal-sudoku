@@ -1,30 +1,32 @@
 import { createFullGrid, removeNumbersFromGrid, copyGrid } from 'utils';
 import {
-  REMOVE_NUMBERS_COUNT_EASY,
-  REMOVE_NUMBERS_COUNT_MEDIUM,
-  REMOVE_NUMBERS_COUNT_HARD,
-  REMOVE_NUMBERS_COUNT_EXPERT,
+  ATTEMPT_EASY,
+  ATTEMPT_MEDIUM,
+  ATTEMPT_HARD,
+  ATTEMPT_EXPERT,
   EMPTY_VALUE,
 } from '../constants';
 import { Grid, Block, FilledBlock, difficultyLevel } from 'types';
 
 export const createNewGame = (level: difficultyLevel = 'easy') => {
-  const removeNumbers = {
-    easy: REMOVE_NUMBERS_COUNT_EASY,
-    medium: REMOVE_NUMBERS_COUNT_MEDIUM,
-    hard: REMOVE_NUMBERS_COUNT_HARD,
-    expert: REMOVE_NUMBERS_COUNT_EXPERT,
+  const attempts = {
+    easy: ATTEMPT_EASY,
+    medium: ATTEMPT_MEDIUM,
+    hard: ATTEMPT_HARD,
+    expert: ATTEMPT_EXPERT,
   };
   const solvedGrid = createFullGrid();
-  const challengeGrid = removeNumbersFromGrid(solvedGrid, removeNumbers[level]);
+  const { grid: challengeGrid, removedBlocks } = removeNumbersFromGrid(
+    solvedGrid,
+    attempts[level]
+  );
   const activeGrid = copyGrid(challengeGrid);
-  const remainingBlocks = removeNumbers[level];
   return {
     challengeGrid,
     solvedGrid,
     activeGrid,
-    remainingBlocks,
-    actualRemainingBlocks: remainingBlocks
+    remainingBlocks: removedBlocks,
+    actualRemainingBlocks: removedBlocks,
   };
 };
 

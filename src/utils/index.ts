@@ -20,3 +20,4 @@ export {
 } from './game';
 export { saveState, loadState } from './localStorage';
 export { checkSolution } from './checkSolution';
+export { solveGrid } from './solveGrid';

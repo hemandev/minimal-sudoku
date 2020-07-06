@@ -7,7 +7,9 @@ import {
   isInGridRow,
   isInGridSquare,
   isGridFull,
+  solveGrid,
 } from 'utils';
+import { global } from 'global';
 
 const numbers: Numbers[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -60,23 +62,43 @@ export const fillGrid = (grid: Grid) => {
 };
 
 /**
- * Removes n number of values from the specified grid
- * @param {Grid} grid
- * @param {number} n
+ * Removes numbers from a full grid to create a Sudoku Puzzle.
+ * @param {Grid} completeGrid
+ * @param {number} attempts - number of attempts to solve (higher means more difficult) - default 5
  */
-export const removeNumbersFromGrid = (grid: Grid, n: number) => {
-  const gridCopy = copyGrid(grid);
+export const removeNumbersFromGrid = (
+  completeGrid: Grid,
+  attempts: number = 5
+) => {
+  const grid = copyGrid(completeGrid);
+  let removedBlocks = 0;
 
-  while (n > 0) {
-    const rng = randomNumberGenerator(GRID_SIZE * GRID_SIZE);
-    const row = Math.floor(rng / GRID_SIZE);
-    const col = Math.floor(rng % GRID_SIZE);
-    if (gridCopy[row][col] !== EMPTY_VALUE) {
-      n--;
-      gridCopy[row][col] = EMPTY_VALUE;
+  while (attempts > 0) {
+    let row = randomNumberGenerator(GRID_SIZE);
+    let col = randomNumberGenerator(GRID_SIZE);
+
+    while (grid[row][col] === 0) {
+      row = randomNumberGenerator(GRID_SIZE);
+      col = randomNumberGenerator(GRID_SIZE);
+    }
+
+    const backup = grid[row][col];
+    grid[row][col] = 0;
+
+    const gridCopy = copyGrid(grid);
+
+    global.counter = 0;
+    solveGrid(gridCopy);
+
+    if (global.counter !== 1) {
+      grid[row][col] = backup;
+      attempts--;
+    } else {
+      removedBlocks++;
     }
   }
-  return gridCopy;
+
+  return { grid, removedBlocks };
 };
 
 /**
