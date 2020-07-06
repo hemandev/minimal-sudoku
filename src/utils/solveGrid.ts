@@ -1,4 +1,4 @@
-import { global } from 'global';
+import { globals } from 'global';
 import { Grid, Numbers } from 'types';
 import { isGridFull, isInGridColumn, isInGridRow, isInGridSquare } from 'utils';
 import { GRID_SIZE } from '../constants';
@@ -25,7 +25,7 @@ export const solveGrid = function (grid: Grid) {
         if (!isAlreadyFilled) {
           grid[row][col] = value;
           if (isGridFull(grid)) {
-            global.counter++;
+            globals.counter++;
             break;
           } else if (solveGrid(grid)) {
             return true;

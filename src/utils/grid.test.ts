@@ -64,11 +64,11 @@ describe('createFullGrid', () => {
 });
 
 describe('removeNumbersFromGrid', () => {
-  it('removes 30 numbers from a completely filled grid', () => {
-    const grid = buildGrid(6) as Grid;
-    const partialGrid = removeNumbersFromGrid(grid, 30);
-    const zeroesList = partialGrid.flat(1).filter(num => num === EMPTY_VALUE);
-    expect(zeroesList).toHaveLength(30);
+  it('removes numbers from a completely filled grid', () => {
+    const testGrid = buildGrid(6) as Grid;
+    const {grid, removedBlocks} = removeNumbersFromGrid(testGrid, 5);
+    const zeroesList = grid.flat(1).filter(num => num === EMPTY_VALUE);
+    expect(zeroesList).toHaveLength(removedBlocks);
   });
 
 });

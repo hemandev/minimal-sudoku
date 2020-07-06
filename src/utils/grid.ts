@@ -9,7 +9,7 @@ import {
   isGridFull,
   solveGrid,
 } from 'utils';
-import { global } from 'global';
+import { globals } from 'global';
 
 const numbers: Numbers[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -87,10 +87,10 @@ export const removeNumbersFromGrid = (
 
     const gridCopy = copyGrid(grid);
 
-    global.counter = 0;
+    globals.counter = 0;
     solveGrid(gridCopy);
 
-    if (global.counter !== 1) {
+    if (globals.counter !== 1) {
       grid[row][col] = backup;
       attempts--;
     } else {

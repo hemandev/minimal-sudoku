@@ -1,3 +1,3 @@
-export const global = {
+export const globals = {
   counter: 0,
 };
