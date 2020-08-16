@@ -12,8 +12,8 @@ script:
   - docker run  hemanditwiz/sudoku-react npm run test:ci 
 
 after_success:
-  - docker build -t hemanditwiz/minimal-sudoku
-  - containerId=$(docker create example:latest)
+  - docker build -t hemanditwiz/minimal-sudoku .
+  - containerId=$(docker create hemanditwiz/minimal-sudoku)
   - docker cp "$containerId":/sudoku/sudoku-react/build ./build
   - docker rm "$containerId"
 
