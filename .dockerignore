@@ -1,0 +1,7 @@
+sudoku-wasm/target
+**/node_modules/
+**/*.rs.bk
+sudoku-wasm/Cargo.lock
+sudoku-wasm/bin/
+sudoku-wasm/pkg/
+sudoku-wasm/wasm-pack.log

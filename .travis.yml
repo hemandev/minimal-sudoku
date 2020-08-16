@@ -1,17 +1,26 @@
-language: node_js
-node_js:
-  - 'stable'
-cache:
-  directories:
-    - node_modules
+language: generic
+
+services: 
+  - docker
+
+before_install:
+  - docker build -t hemanditwiz/sudoku-wasm -f ./sudoku-wasm/Dockerfile ./sudoku-wasm
+  - docker build -t hemanditwiz/sudoku-react .
+
 script:
-  - npm run test:ci
-  - npm run build
+  - docker run  hemanditwiz/sudoku-wasm wasm-pack test --chrome --headless
+  - docker run  hemanditwiz/sudoku-react npm run test:ci 
+
+after_success:
+  - docker build -t hemanditwiz/minimal-sudoku
+  - containerId=$(docker create example:latest)
+  - docker cp "$containerId":/sudoku/sudoku-react/build ./build
+  - docker rm "$containerId"
 
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $github_token
-  local_dir: build
+  local_dir: ./build
   on:
     branch: master
