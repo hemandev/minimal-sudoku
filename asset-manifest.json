@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.js": "/minimal-sudoku/static/js/main.637301d5.chunk.js",
+    "main.js.map": "/minimal-sudoku/static/js/main.637301d5.chunk.js.map",
+    "runtime-main.js": "/minimal-sudoku/static/js/runtime-main.794f06d6.js",
+    "runtime-main.js.map": "/minimal-sudoku/static/js/runtime-main.794f06d6.js.map",
+    "static/js/2.5ab41f44.chunk.js": "/minimal-sudoku/static/js/2.5ab41f44.chunk.js",
+    "static/js/2.5ab41f44.chunk.js.map": "/minimal-sudoku/static/js/2.5ab41f44.chunk.js.map",
+    "static/js/3.3cbb3afb.chunk.js": "/minimal-sudoku/static/js/3.3cbb3afb.chunk.js",
+    "95eaf149d868a472ba31.module.wasm": "/minimal-sudoku/95eaf149d868a472ba31.module.wasm",
+    "static/js/3.3cbb3afb.chunk.js.map": "/minimal-sudoku/static/js/3.3cbb3afb.chunk.js.map",
+    "5780aa5e422dddc342c4.module.wasm": "/minimal-sudoku/5780aa5e422dddc342c4.module.wasm",
+    "index.html": "/minimal-sudoku/index.html",
+    "precache-manifest.60c05d362f4111ffab06f590f10d4196.js": "/minimal-sudoku/precache-manifest.60c05d362f4111ffab06f590f10d4196.js",
+    "service-worker.js": "/minimal-sudoku/service-worker.js",
+    "static/js/1.680fbd29.chunk.worker.js": "/minimal-sudoku/static/js/1.680fbd29.chunk.worker.js",
+    "static/js/1.680fbd29.chunk.worker.js.map": "/minimal-sudoku/static/js/1.680fbd29.chunk.worker.js.map",
+    "static/js/2.5ab41f44.chunk.js.LICENSE.txt": "/minimal-sudoku/static/js/2.5ab41f44.chunk.js.LICENSE.txt",
+    "static/js/sudoku.worker.8a5d7f82.worker.js": "/minimal-sudoku/static/js/sudoku.worker.8a5d7f82.worker.js",
+    "static/js/sudoku.worker.8a5d7f82.worker.js.map": "/minimal-sudoku/static/js/sudoku.worker.8a5d7f82.worker.js.map",
+    "static/media/moon.3afcf0e0.svg": "/minimal-sudoku/static/media/moon.3afcf0e0.svg",
+    "static/media/sun.fe4053b9.svg": "/minimal-sudoku/static/media/sun.fe4053b9.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.794f06d6.js",
+    "static/js/2.5ab41f44.chunk.js",
+    "static/js/main.637301d5.chunk.js"
+  ]
+}
