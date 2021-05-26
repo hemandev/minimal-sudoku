@@ -14,7 +14,7 @@ One written in typescript ( `createNewGame` ) and one written in rust as importe
 By default the app uses the webAssembly module since it performs slightly faster. But you can always switch back to the typescript implementation.
 
 Play now:
-https://hemanditwiz.github.io/minimal-sudoku
+https://hemandev.github.io/minimal-sudoku
 
 ## Performance
 These are measured by taking an average of 100 calls on creating a solved board and removing k number of elements from both of them.
@@ -50,8 +50,8 @@ The app is deployed into `gh-pages` using Travis CI.
 You can get the production build files by running
 
 ```bash
-$ docker build -t hemanditwiz/minimal-sudoku .
-$ containerId=$(docker create hemanditwiz/minimal-sudoku)
+$ docker build -t hemandev/minimal-sudoku .
+$ containerId=$(docker create hemandev/minimal-sudoku)
 $ docker cp "$containerId":/sudoku/sudoku-react/build ./build
 $ docker rm "$containerId"
 ```
